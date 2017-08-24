@@ -92,7 +92,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('dashboard',{
                     url: '/dashboard',
                     //data : {role:'Admin'},
-                    templateUrl: 'static/admin/home.html',
+                    templateUrl: 'static/admin/dashboard.html',
                     controller: 'CountController',
                     controllerAs: 'ctrlCount',
                     resolve: {
