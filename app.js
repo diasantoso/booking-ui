@@ -90,7 +90,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 })
 
                 //SAMPAI SINI
-
+                
                 .state('dashboard',{
                     url: '/dashboard',
                     //data : {role:'Admin'},
