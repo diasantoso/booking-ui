@@ -89,12 +89,10 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                     controllerAs: 'ctrlEmployee'
                 })
 
-                //SAMPAI SINI
-                
                 .state('dashboard',{
                     url: '/dashboard',
                     //data : {role:'Admin'},
-                    templateUrl: '/partials/admin/home',
+                    templateUrl: 'static/admin/home.html',
                     controller: 'CountController',
                     controllerAs: 'ctrlCount',
                     resolve: {
@@ -111,7 +109,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('Office',{
                     url: '/offices',
                     data : {role:'Admin'},
-                    templateUrl: '/partials/admin/office',
+                    templateUrl: 'static/admin/office.html',
                     controller: 'OfficeController',
                     controllerAs: 'ctrlOffice',
                     resolve: {
@@ -128,7 +126,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('Room',{
                     url: '/rooms',
                     data : {role:'Admin'},
-                    templateUrl: 'partials/admin/room',
+                    templateUrl: 'static/admin/room.html',
                     controller: 'RoomController',
                     controllerAs: 'ctrlRoom',
                     resolve: {
@@ -147,7 +145,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 .state('Employee',{
                     url: '/employees',
                     data : {role:'Admin'},
-                    templateUrl: '/partials/admin/employee',
+                    templateUrl: 'static/admin/employee.html',
                     controller: 'EmployeeController',
                     controllerAs: 'ctrlEmployee',
                     resolve: {
@@ -163,7 +161,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('Booking',{
                     url: '/bookings',
-                    templateUrl: '/partials/admin/booking',
+                    templateUrl: 'static/admin/booking.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {

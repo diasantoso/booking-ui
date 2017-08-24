@@ -1,0 +1,274 @@
+<div class="wrapper">
+    <div class="sidebar" data-color="blue" data-image="../assets/img/sidebar-4.jpg">
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    <strong>ADMIN | BOOKING ROOM</strong>
+                </a>
+            </div>
+            <!--NAVIGATION-->
+            <ul class="nav">
+                <li>
+                    <a href="dashboard">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="rooms">
+                        <i class="pe-7s-note2"></i>
+                        <p>Room Manage</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="offices">
+                        <i class="pe-7s-note2"></i>
+                        <p>Office Manage</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="employees">
+                        <i class="pe-7s-note2"></i>
+                        <p>Employee Manage</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="bookings">
+                        <i class="pe-7s-note2"></i>
+                        <p>Booking Manage</p>
+                    </a>
+                </li>
+                <li class="active-pro">
+                    <a href="#" ng-click="ctrlRoom.logout()">
+                        <i class="pe-7s-user"></i>
+                        <p>LOG OUT</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+<div class="main-panel">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card card-plain">
+                        <div class="header">
+                            <h3 class="title"><strong>ROOM DATA</strong></h3><br/>
+                            <p class="category"><h5>This is office data from Blibli.com. You can manage to add, update, delete and restore data office.</h5></p>
+                        </div>
+                        <br/><br/>
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-hover table-striped data">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>NAME</th>
+                                    <th>CAPACITY</th>
+                                    <th>HAVE CONFERENCE</th>
+                                    <th>HAVE PROJECTOR</th>
+                                    <th>NUMBER EXTENSION</th>
+                                    <th>OFFICE</th>
+                                    <th>STATUS</th>
+                                    <th width="100"></th>
+                                    <th width="100"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="u in ctrlRoom.getAllRooms()">
+                                    <!--<td>{{u.idRoom}}</td>-->
+                                    <td>{{$index +1}}</td>
+                                    <td>{{u.name}}</td>
+                                    <td>{{u.capacity}}</td>
+                                    <td>
+                                        <div ng-switch on="{{u.isConference}}">
+                                            <div ng-switch-when="1">Yes</div>
+                                            <div ng-switch-when="0">No</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="{{u.isProjector}}">
+                                            <div ng-switch-when="1">Yes</div>
+                                            <div ng-switch-when="0">No</div>
+                                        </div>
+                                    </td>
+                                    <td>{{u.numberExtension}}</td>
+                                    <td>{{u.office.name}}</td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">Active</div>
+                                            <div ng-switch-when="0">Deactive</div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">
+                                                <button type="button" ng-click="ctrlRoom.editRoom(u.idRoom)" data-toggle="modal" data-target="#myModalAdd" class="btn btn-primary custom-width">Edit</button>
+                                            </div>
+                                            <div ng-switch-when="0">
+
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div ng-switch on="{{u.status}}">
+                                            <div ng-switch-when="1">
+                                                <button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-danger custom-width">Delete</button>
+                                            </div>
+                                            <div ng-switch-when="0">
+                                                <button type="button" ng-click="ctrlRoom.removeRoom(u.idRoom)" class="btn btn-primary custom-width">Restore</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalAdd">Add New Data</button><br/><br/>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="modal fade" id="myModalAdd" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add / Update Data</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" ng-submit="ctrlRoom.submit()" name="myForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Name :</label>
+                        <div class="col-sm-8">
+                            <input type="text" ng-model="ctrlRoom.room.name" id="uname" class="username form-control input-sm" placeholder="Enter new Room name" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Capacity :</label>
+                        <div class="col-sm-8">
+                            <input type="number" ng-model="ctrlRoom.room.capacity" id="capacity" class="username form-control input-sm" placeholder="Enter Capacity for new Room" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Conference :</label>
+                        <div class="col-sm-8">
+                            <input type='hidden' ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isConference=1"  ng-true-value="0" ng-false-value="0" ng-checked="ctrlRoom.room.isConference == 1">
+                            <input type='checkbox' ng-model="ctrlRoom.room.isConference" ng-init="ctrlRoom.room.isConference=1" id="isConference" ng-true-value="1" ng-false-value="0" ng-checked="ctrlRoom.room.isConference == 1"> Yes
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Projector :</label>
+                        <div class="col-sm-8">
+                            <input type='hidden' ng-model="ctrlRoom.room.isProjector" ng-init="ctrlRoom.room.isProjector=1"  ng-true-value="0" ng-false-value="0" ng-checked="ctrlRoom.room.isProjector == 1">
+                            <input type='checkbox' ng-model="ctrlRoom.room.isProjector" ng-init="ctrlRoom.room.isProjector=1" id="isProjector" ng-true-value="1" ng-false-value="0" ng-checked="ctrlRoom.room.isProjector == 1"> Yes
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Number Extension :</label>
+                        <div class="col-sm-8">
+                            <input type="number" ng-model="ctrlRoom.room.numberExtension" id="numberExtension" class="username form-control input-sm" placeholder="Enter Number Extension for new Room" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Office :</label>
+                        <div class="col-sm-8">
+                            <#--<input type="text" ng-model="ctrlRoom.room.office.idOffice" id="office" class="username form-control input-sm" placeholder="Enter Office for the new room" required />-->
+                            <select class="username form-control input-sm" ng-model="ctrlRoom.room.office.idOffice" required>
+                                <option ng-repeat="u in ctrlRoom.getOffices()" value="{{u.idOffice}}">{{u.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <#--Upload Gambar-->
+                    <div class="form-group"  >
+                        <label class="col-sm-3 control-label">Room Image :</label>
+                        <div id="image-preview" class="image-preview">
+                            <label for="image-upload" id="image-label">Choose File</label>
+                            <input type="file" name="file" id="image-upload" ng-upload-change="ctrlRoom.uploadImage($event)" />
+                        </div>
+                        <div id="image-preview1" class="image-preview">
+                            <label for="image-upload1" id="image-label">Choose File</label>
+                            <input type="file" name="file" id="image-upload1" ng-upload-change="ctrlRoom.uploadImage($event)"/>
+                        </div>
+                        <div id="image-preview2" class="image-preview">
+                            <label for="image-upload2" id="image-label2">Choose File</label>
+                            <input type="file" name="file" id="image-upload2" ng-upload-change="ctrlRoom.uploadImage($event)"/>
+                        </div>
+                    </div>
+                <#--New Row Image Upload-->
+                    <div class="form-group"  >
+                        <label class="col-sm-3 control-label"></label>
+                        <div id="image-preview3" class="image-preview">
+                            <label for="image-upload3" id="image-label3">Choose File</label>
+                            <input type="file" name="file" id="image-upload3" ng-upload-change="ctrlRoom.uploadImage($event)" />
+                        </div>
+                        <div id="image-preview4" class="image-preview">
+                            <label for="image-upload4" id="image-label4">Choose File</label>
+                            <input type="file" name="file" id="image-upload4" ng-upload-change="ctrlRoom.uploadImage($event)"/>
+                        </div>
+                    </div>
+
+
+                    <input type="hidden" ng-model="ctrlRoom.room.status" ng-init="ctrlRoom.room.status=1" id="status" class="username form-control input-sm" />
+                    <input type="hidden" ng-model="ctrlRoom.room.idRoom" ng-init="ctrlRoom.room.idRoom=''" id="idRoom" class="username form-control input-sm" />
+
+                    <div class="form-group modal-footer">
+                        <input type="submit"  value="{{!ctrlRoom.room.idRoom ? 'Add' : 'Update'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="../assets-upload/jquery.uploadPreview.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload",
+            preview_box: "#image-preview",
+            label_field: "#image-label"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload1",
+            preview_box: "#image-preview1",
+            label_field: "#image-label1"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload2",
+            preview_box: "#image-preview2",
+            label_field: "#image-label2"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload3",
+            preview_box: "#image-preview3",
+            label_field: "#image-label3"
+        });
+    });
+    $(document).ready(function() {
+        $.uploadPreview({
+            input_field: "#image-upload4",
+            preview_box: "#image-preview4",
+            label_field: "#image-label4"
+        });
+    });
+</script>
+
