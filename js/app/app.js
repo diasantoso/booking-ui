@@ -56,39 +56,41 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('AvailRooms',{
                     url: '/rooms/available',
-                    templateUrl: '/partials/availroom',
+                    templateUrl: 'static/availroom.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })
 
                 .state('checkticket',{
                     url: '/checkticket',
-                    templateUrl: '/partials/checkticket',
+                    templateUrl: 'static/checkticket.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })
 
                 .state('showticket',{
                     url: '/showticket',
-                    templateUrl: '/partials/showticket',
+                    templateUrl: 'static/showticket.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })
 
                 .state('login',{
                     url: '/login',
-                    templateUrl: '/partials/login',
+                    templateUrl: 'static/login.html',
                     controller: 'LoginController',
                     controllerAs: 'ctrlLogin'
                 })
 
                 .state('register',{
                     url: '/register',
-                    templateUrl: '/partials/register',
+                    templateUrl: 'static/register.html',
                     controller: 'EmployeeController',
                     controllerAs: 'ctrlEmployee'
                 })
 
+                //SAMPAI SINI
+                
                 .state('dashboard',{
                     url: '/dashboard',
                     //data : {role:'Admin'},

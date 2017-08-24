@@ -1,0 +1,35 @@
+<!-- Navigation -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#/">Home</a></li>
+            <li><a href="#/listbooking">Upcoming Booking</a></li>
+            <li><a href="#/checkroom">Check Room</a></li>
+            <li><a href="#/checkticket">Check Ticket</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#/register"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+            <li><a href="#/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="login-form">
+    <h1>Register</h1>
+    <form ng-submit="ctrlEmployee.submit()">
+        <div class="form-group">
+            <input type="text" ng-model="ctrlEmployee.employee.name" class="form-control" placeholder="Name" id="name">
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="form-group">
+            <input type="text" ng-model="ctrlEmployee.employee.email" class="form-control" placeholder="Email" id="email">
+            <i class="fa fa-user"></i>
+        </div>
+        <div class="form-group log-status">
+            <input type="password" ng-model="ctrlEmployee.employee.password" class="form-control" placeholder="Password" id="password">
+            <i class="fa fa-lock"></i>
+        </div>
+        <span class="alert">Invalid Credentials</span>
+        <input type="submit" value = "Register" class="log-btn" ng-disabled="myForm.$invalid || myForm.$pristine">
+    </form>
+</div>
