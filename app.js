@@ -177,7 +177,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('EmpDashboard',{
                     url: '/employees/dashboard',
-                    templateUrl: '/partials/employees/employeedashboard',
+                    templateUrl: 'static/employees/employeedashboard.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {
@@ -191,7 +191,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('EmpUpcomingBooking',{
                     url: '/employees/upcoming',
-                    templateUrl: '/partials/employees/empupcomingbooking',
+                    templateUrl: 'static/employees/empupcomingbooking.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {
@@ -207,7 +207,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('EmpAddBooking',{
                     url: '/employees/addbooking',
-                    templateUrl: '/partials/employees/empaddbooking',
+                    templateUrl: 'static/employees/empaddbooking.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking',
                     resolve: {
@@ -222,21 +222,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
                 .state('EmpAvailRooms',{
                     url: '/employees/availableroom',
-                    templateUrl: '/partials/employees/empshowavailableroom',
+                    templateUrl: 'static/employees/empshowavailableroom.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })
 
                 .state('EmpExtendSuccess',{
                     url: '/employees/extendsuccess',
-                    templateUrl: '/partials/employees/empextendsuccess',
+                    templateUrl: 'static/employees/empextendsuccess.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })
 
                 .state('EmpExtendUnsuccess',{
                     url: '/employees/extendunsuccesfull',
-                    templateUrl: '/partials/employees/empextenddiverted',
+                    templateUrl: 'static/employees/empextenddiverted.html',
                     controller: 'BookingController',
                     controllerAs: 'ctrlBooking'
                 })
